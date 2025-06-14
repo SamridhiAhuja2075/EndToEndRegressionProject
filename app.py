@@ -5,8 +5,8 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from random import random
 
-application=Flask(__name__)
-app=application
+app=Flask(__name__)
+
 
 #importing ridge regresssor and standard scaler 
 
