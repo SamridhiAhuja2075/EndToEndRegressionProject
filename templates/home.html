@@ -18,74 +18,77 @@
             <a class="navbar-brand">FWI Prediction Model</a>
         </div>
     </nav>
-    <div class="clearfix">
-        <img src="static/prediction_plot.png" class="col-md-6 float-md-end mb-3 ms-md-3" alt="...">
 
-        <p>
-            This project uses machine learning to predict the likelihood and intensity of forest fires based on
-            environmental metrics like temperature, humidity, wind speed, and more. It is designed to support early
-            warning systems by analyzing input data and estimating fire risk.
-        </p>
-
-        <p>
-            We trained and evaluated Ridge Regression, Lasso Regression, and ElasticNet models on the dataset. These
-            regularized linear models help prevent overfitting while maintaining predictive accuracy.This model can be embedded in forest monitoring systems to provide real-time fire risk assessments, helping
-            authorities make informed decisions.Try it below by entering your own weather data to get an instant FWI prediction:
-        </p>
+    <div class="container">
+        <div class="clearfix">
+            <img src="static/prediction_plot.png" class="col-md-6 float-md-end mb-3 ms-md-3" alt="...">
+    
+            <p>
+                This project uses machine learning to predict the likelihood and intensity of forest fires based on
+                environmental metrics like temperature, humidity, wind speed, and more. It is designed to support early
+                warning systems by analyzing input data and estimating fire risk.
+            </p>
+    
+            <p>
+                We trained and evaluated Ridge Regression, Lasso Regression, and ElasticNet models on the dataset. These
+                regularized linear models help prevent overfitting while maintaining predictive accuracy.This model can be embedded in forest monitoring systems to provide real-time fire risk assessments, helping
+                authorities make informed decisions.Try it below by entering your own weather data to get an instant FWI prediction:
+            </p>
+        </div>
+        <div class="login">
+        <form action="{{ url_for('predict_datapoint')}}" method="post">
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" name="Temperature" placeholder="Temperature" required="required"
+                    aria-label="First name">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" name="RH" placeholder="RH" required="required"
+                    aria-label="Last name">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" name="Ws" placeholder="Ws" required="required"
+                    aria-label="First name">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" name="Rain" placeholder="Rain" required="required"
+                    aria-label="Last name">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" name="FFMC" placeholder="FFMC" required="required"
+                    aria-label="First name">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" name="DMC" placeholder="DMC" required="required"
+                    aria-label="Last name">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" name="ISI" placeholder="ISI" required="required"
+                    aria-label="First name">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" name="Classes" placeholder="Classes" required="required"
+                    aria-label="Last name">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" name="Region" placeholder="Region" required="required"
+                    aria-label="First name">
+             </div>
+             <div class="col">
+                <button type="submit" class="btn btn-dark btn-block btn-large">Predict</button>
+            </div>    
+        </div>
+        </form>
+        <p> THE FWI prediction is {{result}}</p>
     </div>
-    <div class="login">
-    <form action="{{ url_for('predict_datapoint')}}" method="post">
-    <div class="row">
-        <div class="col">
-            <input type="text" class="form-control" name="Temperature" placeholder="Temperature" required="required"
-                aria-label="First name">
-        </div>
-        <div class="col">
-            <input type="text" class="form-control" name="RH" placeholder="RH" required="required"
-                aria-label="Last name">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <input type="text" class="form-control" name="Ws" placeholder="Ws" required="required"
-                aria-label="First name">
-        </div>
-        <div class="col">
-            <input type="text" class="form-control" name="Rain" placeholder="Rain" required="required"
-                aria-label="Last name">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <input type="text" class="form-control" name="FFMC" placeholder="FFMC" required="required"
-                aria-label="First name">
-        </div>
-        <div class="col">
-            <input type="text" class="form-control" name="DMC" placeholder="DMC" required="required"
-                aria-label="Last name">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <input type="text" class="form-control" name="ISI" placeholder="ISI" required="required"
-                aria-label="First name">
-        </div>
-        <div class="col">
-            <input type="text" class="form-control" name="Classes" placeholder="Classes" required="required"
-                aria-label="Last name">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <input type="text" class="form-control" name="Region" placeholder="Region" required="required"
-                aria-label="First name">
-         </div>
-         <div class="col">
-            <button type="submit" class="btn btn-dark btn-block btn-large">Predict</button>
-        </div>    
-    </div>
-    </form>
-    <p> THE FWI prediction is {{result}}</p>
 </body>
 
 </html>
